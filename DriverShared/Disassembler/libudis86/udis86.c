@@ -70,7 +70,9 @@ ud_disassemble(struct ud* u)
   if (u->inp_end) {
     return 0;
   }
-  if ((len = ud_decode(u)) > 0) {
+
+  len = ud_decode(u);
+  if (len > 0) {
     if (u->translator != NULL) {
       u->asm_buf[0] = '\0';
       u->translator(u);

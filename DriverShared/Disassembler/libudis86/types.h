@@ -181,12 +181,12 @@ struct ud
   size_t    inp_buf_size;
   size_t    inp_buf_index;
   uint8_t   inp_curr;
-  size_t    inp_ctr;
+  size_t    inp_ctr;  // 每次decode前设置为0
   uint8_t   inp_sess[64];
-  int       inp_end;
+  int       inp_end;  // 表明inp_buf是否读完
   int       inp_peek;
 
-  void      (*translator)(struct ud*);
+  void      (*translator)(struct ud*); // 把汇报指令转换成intel或者att形式的函数
   uint64_t  insn_offset;
   char      insn_hexcode[64];
 
